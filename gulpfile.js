@@ -11,6 +11,7 @@ const newer = require('gulp-newer');
 const runSequence = require('run-sequence');
 const browserSync = require('browser-sync').create();
 const watch = require('gulp-watch');
+const sassGlob = require('gulp-sass-glob');
 
 gulp.task('html', function() {
   return (
@@ -48,6 +49,7 @@ gulp.task('css', () => {
     .src('src/scss/app.scss')
     .pipe(plumber())
     .pipe(sourcemaps.init())
+    .pipe(sassGlob())
     .pipe(
       sass({
         outputStyle: 'expanded'
